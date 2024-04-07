@@ -1,4 +1,27 @@
-/** Add your relevant code here for the issue to reproduce */
-export default function Home() {
-  return null;
+import { PageClient } from "./page-client";
+import * as React from "react";
+import { SearchParamsRecord, stringifySearchParams } from "./url-helpers";
+
+export default function Home({
+  searchParams,
+}: {
+  searchParams: SearchParamsRecord;
+}) {
+  return (
+    <>
+      <div>
+        <h1 className="text-xl font-bold">Discrepancy in searchParams</h1>
+        <h2 className="font-bold pt-6 relative">
+          <span className="absolute -left-5 bottom-2 block size-3 border-2 border-stone-300 rounded" />
+          Value on server in <code>page.tsx</code> arg
+        </h2>
+        <pre>{stringifySearchParams(searchParams) || "-"}</pre>
+      </div>
+      <React.Suspense>
+        <PageClient searchParamsOnServer={searchParams} />
+      </React.Suspense>
+    </>
+  );
 }
+
+export const dynamic = "force-dynamic";
