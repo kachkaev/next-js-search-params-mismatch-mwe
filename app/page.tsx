@@ -4,6 +4,7 @@ import {
   NextPageSearchParamRecord,
   stringifySearchParams,
 } from "./url-helpers";
+import { SearchParamsFixer } from "./search-params-fixer";
 
 export default function Home({
   searchParams,
@@ -22,6 +23,7 @@ export default function Home({
       </div>
       <React.Suspense>
         <PageClient searchParamsOnServer={searchParams} />
+        <SearchParamsFixer searchParams={searchParams} />
       </React.Suspense>
     </>
   );
