@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import {
-  SearchParamsRecord,
+  NextPageSearchParamRecord,
   generateHref,
   stringifySearchParams,
 } from "./url-helpers";
@@ -21,7 +21,7 @@ function NavItem({
   children: React.ReactNode;
   pathname: string;
   searchParamsOnClient: ReadonlyURLSearchParams;
-  searchParamsOnServer: SearchParamsRecord;
+  searchParamsOnServer: NextPageSearchParamRecord;
   newSearchParamKey: string;
   newSearchParamValue: string | undefined;
 }) {
@@ -55,7 +55,7 @@ function NavItem({
 export function PageClient({
   searchParamsOnServer,
 }: {
-  searchParamsOnServer: SearchParamsRecord;
+  searchParamsOnServer: NextPageSearchParamRecord;
 }) {
   const searchParamsOnClient = useSearchParams();
 

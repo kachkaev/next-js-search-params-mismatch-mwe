@@ -1,11 +1,14 @@
 import { PageClient } from "./page-client";
 import * as React from "react";
-import { SearchParamsRecord, stringifySearchParams } from "./url-helpers";
+import {
+  NextPageSearchParamRecord,
+  stringifySearchParams,
+} from "./url-helpers";
 
 export default function Home({
   searchParams,
 }: {
-  searchParams: SearchParamsRecord;
+  searchParams: NextPageSearchParamRecord;
 }) {
   return (
     <>

@@ -1,17 +1,18 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export type SearchParamsRecord = Record<
-  string,
-  string | string[] | number | undefined | null
->;
+export type NextPageSearchParam = string | string[];
+export type NextPageSearchParamRecord = Record<string, NextPageSearchParam>;
+
+export type SearchParam = NextPageSearchParam | number | null | undefined;
+export type SearchParamRecord = Record<string, SearchParam>;
 
 export type SearchParamsLike =
   | ReadonlyURLSearchParams
-  | SearchParamsRecord
+  | SearchParamRecord
   | URLSearchParams
   | undefined;
 
-function cleanupSearchParams<T extends SearchParamsRecord>(
+function cleanupSearchParams<T extends SearchParamRecord>(
   payload: T
 ): Record<string, string> {
   return Object.fromEntries(
